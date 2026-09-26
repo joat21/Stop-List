@@ -1,7 +1,16 @@
 import express from "express";
+import { createDishRepo } from "./repositories/dishes.repo";
+import { createDishesService } from "./services/dishes.service";
+import { createDishesRouter } from "./routes/dishes.routes";
 
-const app = express();
+export function createApp() {
+  const app = express();
+  app.use(express.json());
 
-app.use(express.json());
+  const dishRepo = createDishRepo();
+  const dishesService = createDishesService({ dishes: dishRepo });
 
-export default app;
+  app.use("/api/dishes", createDishesRouter(dishesService));
+
+  return app;
+}

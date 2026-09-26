@@ -1,11 +1,14 @@
-import app from "./app";
+import "dotenv/config";
+import { createApp } from "./app";
 
-const PORT = 8080;
+const PORT = Number(process.env.PORT) || 8080;
+const HOST = "0.0.0.0";
 
-app.listen(PORT, "0.0.0.0", async (error) => {
-  if (error) {
-    return console.error(error);
-  }
+const server = createApp().listen(PORT, HOST, () => {
+  console.log(`Server listening at http://${HOST}:${PORT}`);
+});
 
-  console.log(`[Server]: Server listening at http://localhost:${PORT}`);
+server.on("error", (err) => {
+  console.error("[Server] failed to start:", err);
+  process.exit(1);
 });
