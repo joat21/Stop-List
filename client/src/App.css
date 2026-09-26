@@ -61,6 +61,10 @@ body {
   background: #fff;
   text-align: left;
   cursor: pointer;
+
+  transition:
+    border-color 200ms,
+    box-shadow 200ms;
 }
 
 .dish-list__button:hover:not(:disabled) {
@@ -153,9 +157,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
   padding: 10px 12px;
   border: 1px solid #e2ddd3;
   border-radius: 6px;
+
+  animation: cardIn 200ms ease;
 }
 
 .active-list__name {
@@ -171,6 +179,7 @@ body {
 
 .active-list__right {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
 }
@@ -193,4 +202,21 @@ body {
 .active-list button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.active-list__name,
+.active-list__reason,
+.dish-list__name {
+  overflow-wrap: break-word;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -31,9 +31,7 @@ export function StopDishForm({ dish, onDone }: StopDishFormProps) {
   });
 
   if (!dish) {
-    return (
-      <p className="status">Выберите блюдо слева, чтобы поставить его в стоп</p>
-    );
+    return <p className="status">Выберите блюдо, чтобы поставить его в стоп</p>;
   }
 
   const onSubmit = handleSubmit(async (values) => {
@@ -43,7 +41,6 @@ export function StopDishForm({ dish, onDone }: StopDishFormProps) {
       onDone();
     } catch (err) {
       if (err instanceof ApiClientError && err.details?.length) {
-        // 422 — раскладываем по полям
         err.details.forEach((d) => {
           setError(d.field as keyof CreateStopEntryInput, {
             message: d.message,
@@ -51,7 +48,6 @@ export function StopDishForm({ dish, onDone }: StopDishFormProps) {
         });
         return;
       }
-      // 404/409/сеть — общая ошибка формы
       const message =
         err instanceof ApiClientError
           ? err.message
