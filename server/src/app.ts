@@ -1,5 +1,6 @@
 import express from "express";
 import { prisma } from "./db";
+import { errorHandler } from "./middleware/errorHandler";
 import { createDishRepo } from "./repositories/dishes.repo";
 import { createStopListRepo } from "./repositories/stopList.repo";
 import { createDishesService } from "./services/dishes.service";
@@ -23,6 +24,8 @@ export function createApp() {
 
   app.use("/api/dishes", createDishesRouter(dishesService));
   app.use("/api/stop-list", createStopListRouter(stopListService));
+
+  app.use(errorHandler);
 
   return app;
 }

@@ -36,3 +36,12 @@ export function toView(
     minutesLeft: minutesLeft(entry, now),
   };
 }
+
+export function calculateExpiresAt(
+  stoppedAt: Date,
+  durationMinutes: number,
+): string {
+  return new Date(
+    stoppedAt.getTime() + durationMinutes * MS_PER_MINUTE,
+  ).toISOString();
+}

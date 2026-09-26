@@ -3,6 +3,7 @@ import {
   CreateStopEntryInput,
   createStopEntrySchema,
   EntryIdParams,
+  entryIdParamsSchema,
   HistoryQuery,
   historyQuerySchema,
   ListActiveQuery,
@@ -37,6 +38,7 @@ export function createStopListRouter(service: StopListService): Router {
 
   router.patch(
     "/:id/return",
+    validate("params", entryIdParamsSchema),
     asyncHandler(async (_req, res) => {
       const { id } = res.locals.params as EntryIdParams;
       res.json(await service.returnEntry(id));
