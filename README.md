@@ -48,7 +48,7 @@ stop-list/
 ### 1. Клонировать репозиторий
 
 ```bash
-git clone <ссылка на репозиторий>
+git clone git@github.com:joat21/Stop-List.git
 cd stop-list
 ```
 
