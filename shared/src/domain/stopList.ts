@@ -26,7 +26,13 @@ export interface StopListEntry {
   returnedAt: string | null;
 }
 
-export type StopListStatus = "active" | "returned" | "expired";
+export const StopListStatus = {
+  ACTIVE: "ACTIVE",
+  RETURNED: "RETURNED",
+  EXPIRED: "EXPIRED",
+} as const;
+export type StopListStatus =
+  (typeof StopListStatus)[keyof typeof StopListStatus];
 
 export type StopListEntryView = StopListEntry & {
   dish: Dish;

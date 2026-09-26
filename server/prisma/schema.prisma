@@ -6,3 +6,12 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
+
+model StopListEntry {
+  id         String    @id @default(uuid())
+  dishId     String
+  reason     String
+  stoppedAt  DateTime
+  expiresAt  DateTime
+  returnedAt DateTime?
+}
