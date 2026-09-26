@@ -39,9 +39,3 @@ export type StopListEntryView = StopListEntry & {
   status: StopListStatus;
   minutesLeft: number; // 0, если запись уже неактивна
 };
-
-export interface CreateStopEntryInput {
-  dishId: string;
-  reason: string;
-  durationMinutes: number;
-}

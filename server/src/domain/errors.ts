@@ -20,7 +20,7 @@ export class ApiError extends Error {
   }
 
   static validation(message: string, details: FieldIssue[] = []) {
-    return new ApiError(422, "VALIDATION_ERROR", message, details);
+    return new ApiError(422, "INVALID_INPUT", message, details);
   }
 
   static badRequest(message: string) {
