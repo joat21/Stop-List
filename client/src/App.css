@@ -95,3 +95,47 @@ body {
 .status--error {
   color: var(--color-accent);
 }
+
+.stop-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stop-form__dish {
+  font-weight: 600;
+  margin: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field textarea,
+.field input {
+  padding: 8px;
+  border: 1px solid #e2ddd3;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.field__error {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+}
+
+.stop-form button {
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.stop-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

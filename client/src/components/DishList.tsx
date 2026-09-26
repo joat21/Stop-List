@@ -33,6 +33,7 @@ export function DishList({ selectedDishId, onSelectDish }: DishListProps) {
   }
 
   const stoppedDishIds = new Set((activeQuery.data ?? []).map((e) => e.dishId));
+  console.log(stoppedDishIds);
 
   return (
     <ul className="dish-list">

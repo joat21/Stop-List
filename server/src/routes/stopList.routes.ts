@@ -6,8 +6,10 @@ import {
   entryIdParamsSchema,
   HistoryQuery,
   historyQuerySchema,
+  ItemsResponse,
   ListActiveQuery,
   listActiveQuerySchema,
+  StopListEntryView,
 } from "@stop-list/shared";
 import { createStopListService } from "../services/stopList.service";
 import { asyncHandler } from "../middleware/asyncHandler";
@@ -32,7 +34,8 @@ export function createStopListRouter(service: StopListService): Router {
     validate("query", listActiveQuerySchema),
     asyncHandler(async (_req, res) => {
       const { category }: ListActiveQuery = res.locals.query;
-      res.json(await service.listActive(category));
+      const items = await service.listActive(category);
+      res.json({ items } satisfies ItemsResponse<StopListEntryView>);
     }),
   );
 
