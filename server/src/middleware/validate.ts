@@ -2,7 +2,7 @@ import type { RequestHandler } from "express";
 import type { ZodType } from "zod";
 import { ApiError } from "../domain/errors";
 
-type Source = "body" | "query";
+type Source = "body" | "query" | "params";
 
 export const validate =
   (source: Source, schema: ZodType): RequestHandler =>

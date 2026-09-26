@@ -41,6 +41,10 @@ export const listActiveQuerySchema = z.object({
   category: z.enum(DISH_CATEGORIES).optional(),
 });
 
+export const entryIdParamsSchema = z.object({
+  id: z.string().min(1, "ID записи стоп-листа обязателен"),
+});
+
 export const historyQuerySchema = z.object({
   limit: z.coerce
     .number()
@@ -57,5 +61,6 @@ export const historyQuerySchema = z.object({
 
 export type CreateStopEntryInput = z.infer<typeof createStopEntrySchema>;
 export type ListActiveQuery = z.infer<typeof listActiveQuerySchema>;
+export type EntryIdParams = z.infer<typeof entryIdParamsSchema>;
 export type HistoryQueryInput = z.input<typeof historyQuerySchema>;
 export type HistoryQuery = z.output<typeof historyQuerySchema>;
