@@ -11,7 +11,7 @@ import { queryKeys } from "./queryKeys";
 export function useActiveStopList(category?: DishCategory) {
   return useQuery({
     queryKey: queryKeys.stopList.active(category),
-    queryFn: () => getActiveStopList(category),
+    queryFn: () => getActiveStopList(category).then((r) => r.items),
   });
 }
 

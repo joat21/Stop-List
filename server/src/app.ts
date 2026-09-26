@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { prisma } from "./db";
 import { errorHandler } from "./middleware/errorHandler";
 import { createDishRepo } from "./repositories/dishes.repo";
@@ -11,6 +12,12 @@ import { createStopListRouter } from "./routes/stopList.routes";
 export function createApp() {
   const app = express();
   app.use(express.json());
+
+  app.use(
+    cors({
+      origin: [process.env.FRONTEND_URL ?? "", "http://localhost:5173"],
+    }),
+  );
 
   const dishRepo = createDishRepo();
   const stopListRepo = createStopListRepo(prisma);

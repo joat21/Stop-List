@@ -5,6 +5,6 @@ import { queryKeys } from "./queryKeys";
 export function useDishes() {
   return useQuery({
     queryKey: queryKeys.dishes,
-    queryFn: getDishes,
+    queryFn: () => getDishes().then((r) => r.items),
   });
 }
